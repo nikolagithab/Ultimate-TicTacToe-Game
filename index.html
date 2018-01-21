@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ultimate Tic Tac Toe</title>
+	<!--
+	Author: Nikola Petrovski 
+	Date created: 5 VI 2017
+	Date updated: 12 VI 2017
+	Version: 1
+	Source: Ellen Bajcar. Assignment 3, 
+	SYST10049 Web Development, Sheridan College
+	Source: coding4.us
+	Purpose: 
+		Develop and publish a webpage for members to play an 
+		ultimate TICTACTOE game modeled after the regular TICTACTOE
+		game.
+	Description:
+		This assignment shows how to buld up an ultimate TICTACTOE. 
+		The external grid consists of 9 nested internal grids.
+		The game should choose a random start person between player 
+		"X" and	player "O", then challenge the player to align 
+		three of his/her tokens in an internal grid. Ultimately 
+		the player should aim to align three oh his/her winning 
+		internal grids.	After each turn the player should be told 
+		whose turn it is and if there are wrong overriding entries. 
+		The game will end once the player alignes three winning
+		internal grids	correctly, or once they run out of 
+		available entries. When the game ends, the players 
+		are given an option to reset the game and playing again.
+	-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css"  href="css/ultimate.css">
+</head>
+<body>
+	<header>
+		<h1>Welcome to Ultimate TicTacToe</h1>
+		<h2>SYST10199 Web Programming</h2>
+	</header>
+	<main>
+	<!-- this id determines behaviour in event when ultimate winner is known-->
+	<h3 id="message">Ultimate TicTacToe</h3>
+	<!-- this class determines style of external grid -->
+	<div class="outerTable">
+		<!-- this class determines style of all three external grid rows -->
+		<div class="outerRow">
+			<!-- this class determines style of all 9 external grid cells.
+			     this id determines behaviour -->
+			<div class="board" id="board1">
+				
+				<!-- There is total of 9 internal grids, each for every board.
+				The difference between them are the unique cell numebers
+				and specific function names(suffix number). Each specific 
+				suffix indicates the respective number of game board. 
+				NOTE: Internal comments from one internal grid apply to all 
+				9 internal grids.-->
+				
+				<table>
+					<tr>
+						<!-- this id determines content of specific cells and
+							 this function contains internal functions-->
+						<td id="s11" onclick="nextMove1(this);"></td>
+						<td id="s12" onclick="nextMove1(this);"></td>
+						<td id="s13" onclick="nextMove1(this);"></td>
+					</tr>
+					<tr>
+						<td id="s14" onclick="nextMove1(this);"></td>
+						<td id="s15" onclick="nextMove1(this);"></td>
+						<td id="s16" onclick="nextMove1(this);"></td>
+					</tr>
+					<tr>
+						<td id="s17" onclick="nextMove1(this);"></td>
+						<td id="s18" onclick="nextMove1(this);"></td>
+						<td id="s19" onclick="nextMove1(this);"></td>
+					</tr>
+				</table>
+				<!-- this id determines content of board specific status 
+					 messages and this function starts board specific game.-->
+				<p><button id="msg1" onclick="startGame1();">
+				Press to Start #1</button></p>
+			</div>
+			<div class="board" id="board2">
+				<table>
+					<tr>
+						<td id="s21" onclick="nextMove2(this);"></td>
+						<td id="s22" onclick="nextMove2(this);"></td>
+						<td id="s23" onclick="nextMove2(this);"></td>
+					</tr>
+					<tr>
+						<td id="s24" onclick="nextMove2(this);"></td>
+						<td id="s25" onclick="nextMove2(this);"></td>
+						<td id="s26" onclick="nextMove2(this);"></td>
+					</tr>
+					<tr>
+						<td id="s27" onclick="nextMove2(this);"></td>
+						<td id="s28" onclick="nextMove2(this);"></td>
+						<td id="s29" onclick="nextMove2(this);"></td>
+					</tr>
+				</table>
+				<p><button id="msg2" onclick="startGame2();">
+				Press to Start #2</button></p>
+			</div>
+			<div class="board" id="board3">
+				<table>
+					<tr>
+						<td id="s31" onclick="nextMove3(this);"></td>
+						<td id="s32" onclick="nextMove3(this);"></td>
+						<td id="s33" onclick="nextMove3(this);"></td>
+					</tr>
+					<tr>
+						<td id="s34" onclick="nextMove3(this);"></td>
+						<td id="s35" onclick="nextMove3(this);"></td>
+						<td id="s36" onclick="nextMove3(this);"></td>
+					</tr>
+					<tr>
+						<td id="s37" onclick="nextMove3(this);"></td>
+						<td id="s38" onclick="nextMove3(this);"></td>
+						<td id="s39" onclick="nextMove3(this);"></td>
+					</tr>
+				</table>
+				<p><button id="msg3" onclick="startGame3();">
+				Press to Start #3</button></p>
+			</div>
+		</div>
+		<div class="outerRow">
+			<div class="board" id="board4">
+				<table>
+					<tr>
+						<td id="s41" onclick="nextMove4(this);"></td>
+						<td id="s42" onclick="nextMove4(this);"></td>
+						<td id="s43" onclick="nextMove4(this);"></td>
+					</tr>
+					<tr>
+						<td id="s44" onclick="nextMove4(this);"></td>
+						<td id="s45" onclick="nextMove4(this);"></td>
+						<td id="s46" onclick="nextMove4(this);"></td>
+					</tr>
+					<tr>
+						<td id="s47" onclick="nextMove4(this);"></td>
+						<td id="s48" onclick="nextMove4(this);"></td>
+						<td id="s49" onclick="nextMove4(this);"></td>
+					</tr>
+				</table>
+				<p><button id="msg4" onclick="startGame4();">
+				Press to Start #4</button></p>
+			</div>
+			<div class="board" id="board5">
+				<table>
+					<tr>
+						<td id="s51" onclick="nextMove5(this);"></td>
+						<td id="s52" onclick="nextMove5(this);"></td>
+						<td id="s53" onclick="nextMove5(this);"></td>
+					</tr>
+					<tr>
+						<td id="s54" onclick="nextMove5(this);"></td>
+						<td id="s55" onclick="nextMove5(this);"></td>
+						<td id="s56" onclick="nextMove5(this);"></td>
+					</tr>
+					<tr>
+						<td id="s57" onclick="nextMove5(this);"></td>
+						<td id="s58" onclick="nextMove5(this);"></td>
+						<td id="s59" onclick="nextMove5(this);"></td>
+					</tr>
+				</table>
+				<p><button id="msg5" onclick="startGame5();">
+				Press to Start #5</button></p>
+			</div>
+			<div class="board" id="board6">
+				<table>
+					<tr>
+						<td id="s61" onclick="nextMove6(this);"></td>
+						<td id="s62" onclick="nextMove6(this);"></td>
+						<td id="s63" onclick="nextMove6(this);"></td>
+					</tr>
+					<tr>
+						<td id="s64" onclick="nextMove6(this);"></td>
+						<td id="s65" onclick="nextMove6(this);"></td>
+						<td id="s66" onclick="nextMove6(this);"></td>
+					</tr>
+					<tr>
+						<td id="s67" onclick="nextMove6(this);"></td>
+						<td id="s68" onclick="nextMove6(this);"></td>
+						<td id="s69" onclick="nextMove6(this);"></td>
+					</tr>
+				</table>
+				<p><button id="msg6" onclick="startGame6();">
+				Press to Start #6</button></p>
+			</div>
+		</div>
+		<div class="outerRow">
+			<div class="board" id="board7">
+				<table>
+					<tr>
+						<td id="s71" onclick="nextMove7(this);"></td>
+						<td id="s72" onclick="nextMove7(this);"></td>
+						<td id="s73" onclick="nextMove7(this);"></td>
+					</tr>
+					<tr>
+						<td id="s74" onclick="nextMove7(this);"></td>
+						<td id="s75" onclick="nextMove7(this);"></td>
+						<td id="s76" onclick="nextMove7(this);"></td>
+					</tr>
+					<tr>
+						<td id="s77" onclick="nextMove7(this);"></td>
+						<td id="s78" onclick="nextMove7(this);"></td>
+						<td id="s79" onclick="nextMove7(this);"></td>
+					</tr>
+				</table>
+				<p><button id="msg7" onclick="startGame7();">
+				Press to Start #7</button></p>
+			</div>
+			<div class="board" id="board8">
+				<table>
+					<tr>
+						<td id="s81" onclick="nextMove8(this);"></td>
+						<td id="s82" onclick="nextMove8(this);"></td>
+						<td id="s83" onclick="nextMove8(this);"></td>
+					</tr>
+					<tr>
+						<td id="s84" onclick="nextMove8(this);"></td>
+						<td id="s85" onclick="nextMove8(this);"></td>
+						<td id="s86" onclick="nextMove8(this);"></td>
+					</tr>
+					<tr>
+						<td id="s87" onclick="nextMove8(this);"></td>
+						<td id="s88" onclick="nextMove8(this);"></td>
+						<td id="s89" onclick="nextMove8(this);"></td>
+					</tr>
+				</table>
+				<p><button id="msg8" onclick="startGame8();">
+				Press to Start #8</button></p>
+			</div>
+			<div class="board" id="board9">
+				<table>
+					<tr>
+						<td id="s91" onclick="nextMove9(this);"></td>
+						<td id="s92" onclick="nextMove9(this);"></td>
+						<td id="s93" onclick="nextMove9(this);"></td>
+					</tr>
+					<tr>
+						<td id="s94" onclick="nextMove9(this);"></td>
+						<td id="s95" onclick="nextMove9(this);"></td>
+						<td id="s96" onclick="nextMove9(this);"></td>
+					</tr>
+					<tr>
+						<td id="s97" onclick="nextMove9(this);"></td>
+						<td id="s98" onclick="nextMove9(this);"></td>
+						<td id="s99" onclick="nextMove9(this);"></td>
+					</tr>
+				</table>
+				<p><button id="msg9" onclick="startGame9();">
+				Press to Start #9</button></p>
+			</div>
+		</div>
+	</div>
+	<!-- this function "RELOADS" the game and cleans all cells. -->
+	<button onclick="">Rules</button>
+	<button onclick="">Stats</button>
+	<button onclick="resetGame();">Reset</button>
+	
+	</main>
+	<footer> 
+		<address>Nikola Petrovski, 2017 &copy; 
+		SYST10199 Web Programming, Sheridan College</address>
+	</footer>
+	
+<script src="js/ultimate.js"></script>
+
+</body>
+</html>

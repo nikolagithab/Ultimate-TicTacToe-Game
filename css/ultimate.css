@@ -1,0 +1,103 @@
+/* The Ultimate TICTACTOE game has a layout of a table with
+	3 rows adn 3 columns format in green color.*/
+
+main {
+	text-align: center;
+	width: 100%;
+}
+div {
+	margin: 1px auto;
+}
+.outerTable {
+	display:table; 
+	width:500px;
+	text-align:centre; 
+	margin-top:5px;
+}
+.outerRow {
+	display:table-row;
+}
+.board {
+	display:table-cell; 
+	padding:5px; 
+}
+table {
+	margin: auto;
+	background-color: white;
+	color: green;
+	font-family: Helvetica,"Lucida Grande",Arial,sans-serif;
+}
+td {
+	height: 70px;
+	width: 70px;
+	font-size: 1.5em;
+	font-family: sans-serif;
+	border: solid green;
+	background-color: transparent;
+	padding: 0px;
+}
+td:nth-child(1) 
+	{border-left-style: none;}
+td:nth-child(3) 
+	{border-right-style: none;}
+tr:nth-child(1)>td 
+	{border-top-style: none;}
+tr:nth-child(3)>td 
+	{border-bottom-style: none;}
+
+header 
+	{text-align: center;}
+footer 
+	{text-align: center;}
+
+button {
+	background-color: orange;
+	border: 1px #fff solid;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1.2em;
+	padding: 10px 5px;
+	text-decoration: none;
+	width: 180px;
+	margin: 2px;
+}
+
+@media all and ( max-device-width: 640px ) and 
+( max-width: 640px ){
+	table {
+		width: 100%;
+		margin: 1px auto;
+		padding: 1px;
+		background-color: white;
+		color: GREEN;
+		font-family: Helvetica,Arial,"Lucida Grande",sans-serif;
+	}
+	td {
+	height: 40px;
+	width: 40px;
+	font-size: 1em;
+	}
+	header {
+		display: none;
+		text-align: center;
+	}
+	h3 {		
+		font-size: 2em; 
+		margin:0; 
+		padding:0;
+	}
+	
+	button {
+	background-color: orange;
+	border: 1px #fff solid;
+	border-radius: 1px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1em;
+	padding: 1px 1px;
+	text-decoration: none;
+	/* width: 150px; */
+	margin: 1px;
+	}
+}
